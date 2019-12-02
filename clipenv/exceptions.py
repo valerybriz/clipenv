@@ -12,6 +12,15 @@ class ClipenvIllegalArgumentError(ClipenvError):
     pass
 
 
+class ClipenvVarNotFoundError:
+    """Raised when a varibale is not found in the file"""
+
+    def __init__(self):
+        pass
+
+    pass
+
+
 class ClipenvIOError(IOError):
     """Base class for I/O errors"""
 

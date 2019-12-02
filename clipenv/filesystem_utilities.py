@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import re
 
 from clipenv import CONFIG_FILES
 from .exceptions import InvalidConfigFileOption
@@ -32,3 +33,17 @@ def _file_exists(root, config_file):
 
 def is_valid_var_name(venv_name):
     return False if ' ' in venv_name or '=' in venv_name else True
+
+
+def check_if_string_in_text(needed_string, text):
+    found_string = False
+
+    if not isinstance(text, list):
+        text = [text]
+    for i, line in enumerate(text):
+        search_result = re.search(needed_string, line)
+        if search_result:
+            found_string = True
+            break
+
+    return found_string, i
